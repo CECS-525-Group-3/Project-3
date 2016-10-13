@@ -25,7 +25,7 @@ class TemperatureFrame(tk.Frame):
         super().__init__(master)
         self._create_text()
         temperature.bind_to(self._update_temperature)
-        # temperature.bind_to(self._play_sound)
+        temperature.bind_to(self._play_sound)
 
     def _create_text(self):
         self.temperature_label = tk.Label(self.master, text=u'0\u2109', font=('Arial', 300))
@@ -84,6 +84,6 @@ if __name__ == '__main__':
     app = Application(temperature, master=root)
     
     while True:
-        root.after(2000, temperature.set_temperature(random.randint(0, 100)))
+        root.after(2000, temperature.set_temperature(round(random.random() * 100, 2)))
         root.update_idletasks()
         root.update()
